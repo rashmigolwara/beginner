@@ -20,8 +20,8 @@ int main()
     scanf("%s",fname);
     fp = fopen(fname, "r");
 
-    do {
-        c = fgetc(fp);
+    for(c = fgetc(fp); c != EOF; c = fgetc(fp))
+    {
         if (checkAlphabet(c))
             wordStarted = 1;
         else if (wordStarted)
@@ -32,8 +32,8 @@ int main()
         numChar = numChar + 1;
         if (c == '\n')
             numLines = numLines + 1;
-    } while(c != EOF);
 
+    }
     printf("%d %d %d %s\n", numLines, numWords, numChar, fname);
     return 0;
 }
